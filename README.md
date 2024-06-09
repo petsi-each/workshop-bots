@@ -1,69 +1,69 @@
-# Workshop Syllabus: Creating a Basic Telegram Bot with python-telegram-bot 21.3
+# Programa do Workshop: Criando um Bot Básico para o Telegram com python-telegram-bot 21.3
 
-## Workshop Overview
-This workshop is designed to guide participants through the process of creating a basic Telegram bot using the `python-telegram-bot` library, version 21.3. By the end of the workshop, participants will have a working Telegram bot that can respond to commands and messages.
+## Visão Geral do Workshop
+Este workshop foi criado para guiar os participantes no processo de criação de um bot básico para o Telegram usando a biblioteca `python-telegram-bot`, versão 21.3. Ao final do workshop, os participantes terão um bot funcional para o Telegram capaz de responder a comandos e mensagens.
 
-## Target Audience
-- Beginner to intermediate Python developers
-- Individuals interested in building Telegram bots
-- No prior experience with Telegram bot development required
+## Público-Alvo
+- Desenvolvedores Python iniciantes a intermediários
+- Indivíduos interessados em construir bots para o Telegram
+- Não é necessário ter experiência prévia com o desenvolvimento de bots para o Telegram
 
-## Duration
-- Total: 4 hours
-- Divided into four 1-hour sessions
+## Duração
+- Total: 4 horas
+- Dividido em quatro sessões de 1 hora cada
 
-## Session 1: Introduction and Setup
+## Sessão 1: Introdução e Configuração
 
-**Duration: 1 hour**
+**Duração: 1 hora**
 
-**Objectives:**
-- Understand the basics of Telegram bots
-- Set up the development environment
+**Objetivos:**
+- Entender os conceitos básicos dos bots do Telegram
+- Configurar o ambiente de desenvolvimento
 
 **Agenda:**
-1. **Introduction to Telegram Bots (15 mins)**
-   - What are Telegram bots?
-   - Use cases and examples
-   - Overview of the `python-telegram-bot` library
+1. **Introdução aos Bots do Telegram (15 minutos)**
+   - O que são bots do Telegram?
+   - Casos de uso e exemplos
+   - Visão geral da biblioteca `python-telegram-bot`
 
-2. **Creating a Bot on Telegram (15 mins)**
-   - Interacting with the BotFather
-   - Creating a new bot
-   - Obtaining the bot token
+2. **Criando um Bot no Telegram (15 minutos)**
+   - Interagindo com o BotFather
+   - Criando um novo bot
+   - Obtendo o token do bot
 
-3. **Setting Up the Development Environment (30 mins)**
-   - Installing Python and pip
-   - Setting up a virtual environment
-   - Installing `python-telegram-bot` version 21.3
+3. **Configurando o Ambiente de Desenvolvimento (30 minutos)**
+   - Instalando Python e pip
+   - Configurando um ambiente virtual
+   - Instalando `python-telegram-bot` versão 21.3
      ```bash
      pip install python-telegram-bot==21.3
      ```
 
-## Session 2: Basic Bot Development
+## Sessão 2: Desenvolvimento Básico do Bot
 
-**Duration: 1 hour**
+**Duração: 1 hora**
 
-**Objectives:**
-- Create a basic Telegram bot
-- Implement simple command handlers
+**Objetivos:**
+- Criar um bot básico para o Telegram
+- Implementar manipuladores de comandos simples
 
 **Agenda:**
-1. **Writing the Bot Script (20 mins)**
-   - Setting up the project structure
-   - Writing the basic bot script
-   - Explanation of the main function and handlers
+1. **Escrevendo o Script do Bot (20 minutos)**
+   - Configurando a estrutura do projeto
+   - Escrevendo o script básico do bot
+   - Explicação da função principal e dos manipuladores
 
    ```python
    from telegram import Update
    from telegram.ext import Application, CommandHandler
 
-   BOT_TOKEN = 'YOUR_BOT_TOKEN'
+   BOT_TOKEN = 'SEU_TOKEN_DO_BOT'
 
    async def start(update: Update, context):
-       await update.message.reply_text('Hi!')
+       await update.message.reply_text('Olá!')
 
    async def help_command(update: Update, context):
-       await update.message.reply_text('Help!')
+       await update.message.reply_text('Ajuda!')
 
    def main():
        application = Application.builder().token(BOT_TOKEN).build()
@@ -75,26 +75,26 @@ This workshop is designed to guide participants through the process of creating 
        main()
     ```
 
-2. **Running the Bot (20 mins)**
-    - Running the script
-    - Testing the bot with /start and /help commands
+2. **Executando o Bot (20 minutos)**
+    - Executando o script
+    - Testando o bot com os comandos /start e /help
 
-3. **Q&A and Troubleshooting (20 mins)**
-    - Common issues and solutions
-    - Interactive troubleshooting
+3. **Perguntas e Respostas e Solução de Problemas (20 minutos)**
+    - Problemas comuns e soluções
+    - Solução interativa de problemas
 
-## Session 3: Enhancing Bot Functionality
+## Sessão 3: Aprimorando a Funcionalidade do Bot
 
-**Duration: 1 hour**
+**Duração: 1 hora**
 
-**Objectives:**
-- Add message handlers to the bot
-- Implement more interactive features
+**Objetivos:**
+- Adicionar manipuladores de mensagens ao bot
+- Implementar recursos mais interativos
 
 **Agenda:**
-1. **Adding Message Handlers (20 mins)**
-   - Introduction to message handlers
-   - Writing an echo handler to respond to text messages
+1. **Adicionando Manipuladores de Mensagens (20 minutos)**
+   - Introdução aos manipuladores de mensagens
+   - Escrevendo um manipulador de eco para responder a mensagens de texto
 
    ```python
    from telegram.ext import MessageHandler, filters
@@ -102,14 +102,14 @@ This workshop is designed to guide participants through the process of creating 
    async def echo(update: Update, context):
        await update.message.reply_text(update.message.text)
 
-   # In main()
+   # Em main()
    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
     ```
 
-2. Implementing Additional Commands (20 mins)
-    - Adding more commands like /about, /contact, etc.
-    - Best practices for command naming and handling
+2. **Implementando Comandos Adicionais (20 minutos)**
+    - Adicionando mais comandos como /sobre, /contato, etc.
+    - Melhores práticas para nomeação e manipulação de comandos
 
-3. Interactive Features (20 mins)
-    - Adding buttons and menus
-    - Using inline keyboards
+3. **Recursos Interativos (20 minutos)**
+    - Adicionando botões e menus
+    - Utilizando teclados inline

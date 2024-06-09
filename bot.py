@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
+load_dotenv()
+
 # Your bot token obtained from BotFather
-BOT_TOKEN = '7134612151:AAFSDZFYPK2w1wgg-xkIZRrcoBHyJwfaeUc'
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 async def start(update: Update, context):
     """Send a message when the command /start is issued."""
