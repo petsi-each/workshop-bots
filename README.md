@@ -9,8 +9,8 @@ Este workshop foi criado para guiar os participantes no processo de criação de
 - Não é necessário ter experiência prévia com o desenvolvimento de bots para o Telegram
 
 ## Duração
-- Total: 4 horas
-- Dividido em quatro sessões de 1 hora cada
+- Total: 2 horas
+- Dividido em três sessões
 
 ## Sessão 1: Introdução e Configuração
 
