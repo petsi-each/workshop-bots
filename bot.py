@@ -4,7 +4,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
 # Assuming `love_calculator` is defined in calc.py and imported correctly.
-from calc import love_calculator
+from calc import love_calculator, name_to_value
 
 # Load environment variables from .env file
 load_dotenv()
@@ -35,6 +35,14 @@ async def calcula_amor(update: Update, context):
     else:
         await update.message.reply_text("Por favor, forneça exatamente dois nomes para testar a compatibilidade.")
 
+async def oraculo(update: Update, context):
+    nome = context.args[0]
+    valor = name_to_value(nome)
+    if valor % 2 == 0:
+        await update.message.reply_text(f"{nome} terá um amor verdadeiro!")
+    else:
+        await update.message.reply_text(f"{nome} nunca terá um amor verdadeiro!")
+
 def main():
     """Start the bot."""
     # Create the Application and pass it your bot's token
@@ -44,6 +52,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("calculadora", calcula_amor))
+    application.add_handler(CommandHandler("oraculo", oraculo))
 
     # on non-command i.e. message - echo the message on Telegram
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
